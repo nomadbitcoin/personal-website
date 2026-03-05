@@ -1,0 +1,694 @@
+/* 
+   Main Stylesheet for Yan Luiz's Website
+   Based on Rafael Lima's template
+*/
+
+/* ===== VARIABLES ===== */
+:root {
+  /* Colors */
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --text-color-light: #666666;
+  --accent-color: #45f0f0;
+  --accent-color-secondary: #fde157;
+  --white: #ffffff;
+  --light-gray: #45f0f0;
+  --border-color: #fde157;
+  --prussian-blue: #043256;
+  --celestial-blue: #0695d6;
+
+  /* Typography */
+  --heading-font: "Montserrat", sans-serif;
+  --body-font: "Open Sans", sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 5rem;
+
+  /* Container */
+  --container-width: 1200px;
+  --container-padding: 1rem;
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--body-font);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: var(--spacing-sm);
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin-bottom: var(--spacing-md);
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-color-light);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+p {
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  text-decoration: none;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 90%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+}
+
+.section-divider {
+  width: 70px;
+  height: 2px;
+  background-color: var(--accent-color-secondary);
+  margin: 0 auto var(--spacing-lg);
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent-color);
+  color: var(--white);
+  font-family: var(--heading-font);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-color-secondary);
+  color: var(--prussian-blue);
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent-color-secondary);
+  color: var(--prussian-blue);
+  font-family: var(--heading-font);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background-color: var(--accent-color);
+  color: var(--white);
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--white);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 70px;
+}
+
+.nav-menu {
+  display: flex;
+}
+
+.nav-menu li {
+  margin-left: var(--spacing-md);
+}
+
+.nav-menu a {
+  font-family: var(--heading-font);
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  padding: 0.5rem;
+  position: relative;
+}
+
+.nav-menu a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent-color-secondary);
+  transition: width 0.3s ease;
+}
+
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
+  width: 100%;
+  background-color: var(--accent-color);
+}
+
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.mobile-menu span {
+  width: 100%;
+  height: 2px;
+  background-color: var(--text-color);
+  transition: all 0.3s ease;
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 70px;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero-text {
+  flex: 1;
+  padding-right: var(--spacing-lg);
+}
+
+.hero-text h5 {
+  margin-bottom: var(--spacing-xs);
+}
+
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-lg);
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.image-placeholder {
+  width: 400px;
+  height: 500px;
+  background-color: var(--light-gray);
+  border-radius: 5px;
+}
+
+/* ===== COMPANIES SECTION ===== */
+.companies {
+  background-color: var(--white);
+}
+
+.companies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.company-card {
+  background-color: var(--background-color);
+  padding: var(--spacing-lg);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.company-logo {
+  margin-bottom: var(--spacing-md);
+}
+
+.company-logo h3 {
+  font-size: 1.5rem;
+  color: var(--text-color);
+}
+
+.company-divider {
+  width: 50px;
+  height: 2px;
+  background-color: var(--accent-color);
+  margin: 0 auto var(--spacing-md);
+}
+
+.company-card p {
+  font-size: 0.95rem;
+  color: var(--text-color-light);
+}
+
+/* ===== PROJECTS SECTION ===== */
+.projects {
+  background-color: var(--background-color);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.project-card {
+  background-color: var(--white);
+  padding: var(--spacing-lg);
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.project-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: var(--spacing-sm);
+  color: var(--prussian-blue);
+}
+
+.project-content p {
+  font-size: 0.95rem;
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-md);
+  flex-grow: 1;
+}
+
+.project-content .read-more {
+  display: inline-block;
+  margin-top: auto;
+  font-weight: 600;
+  color: var(--celestial-blue);
+}
+
+.category-title {
+  font-size: 1.5rem;
+  margin: var(--spacing-lg) 0 var(--spacing-md);
+  color: var(--prussian-blue);
+  border-left: 4px solid var(--accent-color);
+  padding-left: var(--spacing-sm);
+}
+
+.mini-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.mini-card {
+  padding: var(--spacing-md);
+}
+
+.mini-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.mini-card p {
+  font-size: 0.85rem;
+  margin-bottom: 0.8rem;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  background-color: var(--light-gray);
+  border-radius: 4px;
+  color: var(--text-color-light);
+  font-weight: 600;
+}
+
+/* ===== PHILOSOPHIES SECTION ===== */
+.philosophies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.philosophy-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-lg);
+}
+
+.philosophy-icon {
+  margin-right: var(--spacing-md);
+  flex-shrink: 0;
+}
+
+.check-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--light-gray);
+  border-radius: 50%;
+  color: var(--text-color);
+  font-weight: bold;
+}
+
+.philosophy-content h3 {
+  margin-bottom: var(--spacing-xs);
+  font-size: 1.3rem;
+}
+
+.philosophy-content p {
+  font-size: 0.95rem;
+  color: var(--text-color-light);
+  margin-bottom: var(--spacing-xs);
+}
+
+.read-more {
+  font-weight: 600;
+  color: var(--prussian-blue);
+  font-size: 0.9rem;
+}
+
+.read-more:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+}
+
+.read-more-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: color 0.3s ease;
+}
+
+.read-more-btn:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.expanded-text {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+.philosophy-content {
+  position: relative;
+}
+
+.short-text,
+.expanded-text {
+  transition: opacity 0.3s ease;
+}
+
+/* ===== ARTICLES SECTION ===== */
+.articles {
+  background-color: var(--white);
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.article-card {
+  background-color: var(--background-color);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.article-date {
+  padding: var(--spacing-sm);
+  background-color: var(--light-gray);
+  font-size: 0.5rem;
+  color: var(--text-color-light);
+  min-height: 10px;
+}
+
+.article-content {
+  padding: var(--spacing-md);
+  position: relative;
+}
+
+.article-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+
+.article-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.articles-cta {
+  text-align: center;
+}
+
+/* ===== MANIFESTO SECTION ===== */
+.manifesto-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-lg);
+}
+
+.manifesto-column p {
+  margin-bottom: var(--spacing-md);
+  font-size: 1rem;
+}
+
+.signature {
+  font-family: "Brush Script MT", cursive;
+  font-size: 2.5rem;
+  color: var(--accent-color);
+  margin-top: var(--spacing-md);
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background-color: var(--text-color);
+  color: var(--white);
+  padding: var(--spacing-md) 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.email-link {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.email-link:hover {
+  color: var(--accent-color-secondary);
+}
+
+/* ===== RESPONSIVE STYLES ===== */
+@media screen and (max-width: 992px) {
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-text {
+    padding-right: 0;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .hero-image img {
+    max-width: 700px;
+  }
+
+  .philosophies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .manifesto-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--white);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: var(--spacing-md);
+  }
+
+  .nav-menu.active li {
+    margin: var(--spacing-xs) 0;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+
+  .mobile-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+
+  .mobile-menu.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+
+  .philosophies-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .company-card {
+    padding: var(--spacing-md);
+  }
+
+  .philosophy-item {
+    flex-direction: column;
+  }
+
+  .philosophy-icon {
+    margin-right: 0;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .hero-image img {
+    max-width: 600px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  html {
+    font-size: 14px;
+  }
+
+  .hero {
+    height: auto;
+    padding: 120px 0 var(--spacing-xl);
+  }
+
+  .hero-image img {
+    max-width: 450px;
+  }
+
+  .company-card {
+    padding: var(--spacing-md);
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+}
